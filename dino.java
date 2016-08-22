@@ -23,15 +23,24 @@ public class dino extends Actor
         checkFall();
         moving();
         crash();
+        slide();
         delay--;
+    }
+    public void slide()
+    {
+        if(Greenfoot.isKeyDown("shift")) {
+            setRotation(-90);
+            setLocation(getX(), 400);
+        } else {
+            setRotation(0);
+        }
     }
     public void jump()
     {
-        if (Greenfoot.isKeyDown("space") && getY() == 358)
-        {
+        if (Greenfoot.isKeyDown("space") && getY() == 358) {
             vSpeed = -25;
             fall();
-        }
+        } 
    
     }
     public void fall()
