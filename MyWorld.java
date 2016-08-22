@@ -28,7 +28,9 @@ public class MyWorld extends World
     private void prepare()
     {
         dino dino = new dino();
-        addObject(dino,600,358);
+        addObject(dino,700,358);
+        Boss boss = new Boss();
+        addObject(boss,180,242);
     }
 
     public void act()

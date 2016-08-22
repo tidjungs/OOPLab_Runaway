@@ -15,10 +15,15 @@ public class dino extends Actor
      
     int vSpeed = 0;
     int acceleration = 1;
+    boolean isMoving = false;
+    int delay = 0;
     public void act() 
     {
         jump();
         checkFall();
+        moving();
+        crash();
+        delay--;
     }
     public void jump()
     {
@@ -45,5 +50,28 @@ public class dino extends Actor
             fall();
         }
    }
+   public void moving()
+    {   
+        if(delay == 0) {
+            if(isMoving) { 
+                setImage(new GreenfootImage("dino.png"));
+                delay = 10;
+                isMoving = false; 
+            } else {
+                setImage(new GreenfootImage("dinoMove.png"));
+                delay = 10;
+                isMoving = true;
+            }
+        }
+    }
+    public void crash()
+    {
+        Actor object = getOneObjectAtOffset(0,0, Object.class);
+        if(object != null) {
+           setLocation(getX() - 40, getY());
+           World world = getWorld();
+           world.removeObject(object);
+        }
+    }
     
 }
