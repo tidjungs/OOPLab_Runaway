@@ -27,9 +27,8 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-
         dino dino = new dino();
-        addObject(dino,68,342);
+        addObject(dino,600,358);
     }
 
     public void act()
@@ -38,7 +37,7 @@ public class MyWorld extends World
     }
     public void createObject()
     {
-        if(Greenfoot.getRandomNumber(400) < 1 && count <= 0) {
+        if(Greenfoot.getRandomNumber(100) < 1 && count <= 0) {
             Object object = new Object();
             addObject(object,1200,355);
             count = 100;

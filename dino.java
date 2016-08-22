@@ -13,8 +13,8 @@ public class dino extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
      
-    private int vSpeed = 0;
-    private int acceleration = 1;
+    int vSpeed = 0;
+    int acceleration = 1;
     public void act() 
     {
         jump();
@@ -22,28 +22,26 @@ public class dino extends Actor
     }
     public void jump()
     {
-        if (Greenfoot.isKeyDown("space"))
+        if (Greenfoot.isKeyDown("space") && getY() == 358)
         {
-            if(vSpeed == 0) {
-                vSpeed = -8;
-            }
-           
+            vSpeed = -25;
+            fall();
         }
    
     }
     public void fall()
     {
+        //System.out.println(getY());
         setLocation(getX(), getY()+vSpeed);
         vSpeed = vSpeed + acceleration;
     }
     public void checkFall()
     {
-        if (getY() == getWorld().getWidth())
-        {
+        if (getY() >= 358) {
             vSpeed = 0;
+            setLocation(getX(), 358);
         }
-        else
-        {
+        else {
             fall();
         }
    }
