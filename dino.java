@@ -66,7 +66,7 @@ public class dino extends Actor
     }
     public void crash()
     {
-        Actor object = getOneObjectAtOffset(0,0, Object.class);
+        Actor object = getOneIntersectingObject(Object.class);
         if(object != null) {
            setLocation(getX() - 40, getY());
            World world = getWorld();

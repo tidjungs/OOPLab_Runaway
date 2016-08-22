@@ -14,11 +14,14 @@ public class MyWorld extends World
      * 
      */
     int count = 0;
+    int stage = 100;
+    int timeLogger = 0;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1200, 400, 1); 
         prepare();
+        changeStage();
     }
 
     /**
@@ -36,15 +39,24 @@ public class MyWorld extends World
     public void act()
     {
         createObject();
+        timeLogger++;
+        System.out.println(timeLogger);
     }
     public void createObject()
     {
-        if(Greenfoot.getRandomNumber(100) < 1 && count <= 0) {
+        if(Greenfoot.getRandomNumber(stage) < 1 && count <= 0) {
             Object object = new Object();
             addObject(object,1200,355);
-            count = 100;
+            count = stage;
         }
         count--;
         
+    }
+    public void changeStage()
+    {
+        if(timeLogger % 100 == 0) {
+            stage--;
+        }
+      
     }
 }
