@@ -21,7 +21,8 @@ public class Object extends Actor
     public void clearObject()
     {
         if(getX() == 0) {
-            movement = 5;
+           World world = getWorld();
+           world.removeObject(this);
         }
     }
 }

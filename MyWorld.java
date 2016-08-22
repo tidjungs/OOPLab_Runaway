@@ -26,8 +26,7 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        Object object = new Object();
-        addObject(object,590,358);
+        
     }
     public void act()
     {
@@ -35,7 +34,7 @@ public class MyWorld extends World
     }
     public void createObject()
     {
-        if(Greenfoot.getRandomNumber(1000) < 1) {
+        if(Greenfoot.getRandomNumber(100) < 1) {
             Object object = new Object();
             addObject(object,590,358);
         }
