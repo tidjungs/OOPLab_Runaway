@@ -13,10 +13,11 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    int count = 0;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(1200, 400, 1); 
         prepare();
     }
 
@@ -26,17 +27,23 @@ public class MyWorld extends World
      */
     private void prepare()
     {
-        
+
+        dino dino = new dino();
+        addObject(dino,68,342);
     }
+
     public void act()
     {
         createObject();
     }
     public void createObject()
     {
-        if(Greenfoot.getRandomNumber(100) < 1) {
+        if(Greenfoot.getRandomNumber(400) < 1 && count <= 0) {
             Object object = new Object();
-            addObject(object,590,358);
+            addObject(object,1200,355);
+            count = 100;
         }
+        count--;
+        
     }
 }
