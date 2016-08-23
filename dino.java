@@ -41,6 +41,8 @@ public class dino extends Actor
     public void jump()
     {
         if (Greenfoot.isKeyDown("space") && getY() == 358) {
+            GreenfootSound jump = new GreenfootSound("jump.wav");
+            jump.play();
             vSpeed = -25;
             fall();
         } 
@@ -84,6 +86,8 @@ public class dino extends Actor
            world.removeObject(cactus);
            setImage(new GreenfootImage("hurt.png"));
            delay = 20;
+           GreenfootSound hurt = new GreenfootSound("hurt.wav");
+           hurt.play();
         }
     }
     
