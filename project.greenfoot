@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Aug 24 00:02:26 ICT 2016
+#Wed Aug 24 00:13:26 ICT 2016
 dependency9.type=UsesDependency
 target4.type=ClassTarget
 dependency3.from=MyWorld
@@ -63,7 +63,7 @@ target5.x=70
 target1.name=Boss
 class.Gameover.image=gameover.png
 target4.y=70
-class.Cactus.image=object.png
+class.Cactus.image=cactus.png
 target4.x=70
 dependency7.from=Boss
 target3.y=130
