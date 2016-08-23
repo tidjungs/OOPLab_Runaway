@@ -78,6 +78,7 @@ public class dino extends Actor
            World world = getWorld();
            world.removeObject(object);
            setImage(new GreenfootImage("hurt.png"));
+           delay = 20;
         }
     }
     
