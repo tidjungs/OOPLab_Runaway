@@ -37,6 +37,9 @@ public class MyWorld extends World
         addObject(dino,700,358);
         Boss boss = new Boss();
         addObject(boss,180,242);
+        Counter counter = new Counter();
+        addObject(counter,994,68);
+        counter.setLocation(973,59);
     }
 
     public void act()
