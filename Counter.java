@@ -20,7 +20,8 @@ public class Counter extends Actor
      
     public void addScore()
     {   
-        if(timeLog % 100 == 0){
+        boolean gameOver = ((MyWorld) getWorld()).gameOver;
+        if(timeLog % 100 == 0 && !gameOver){
             score++;
         }
     }
