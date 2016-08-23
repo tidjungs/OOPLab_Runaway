@@ -15,7 +15,7 @@ public class dino extends Actor
      
     int vSpeed = 0;
     int acceleration = 1;
-    boolean isMoving = false;
+    boolean isLeft = false;
     int delay = 0;
     public void act() 
     {
@@ -29,10 +29,8 @@ public class dino extends Actor
     public void slide()
     {
         if(Greenfoot.isKeyDown("shift")) {
-            setRotation(-90);
-            setLocation(getX(), 400);
-        } else {
-            setRotation(0);
+           setImage(new GreenfootImage("dino_slide.png"));
+           setLocation(getX(), 372);
         }
     }
     public void jump()
@@ -45,7 +43,6 @@ public class dino extends Actor
     }
     public void fall()
     {
-        //System.out.println(getY());
         setLocation(getX(), getY()+vSpeed);
         vSpeed = vSpeed + acceleration;
     }
@@ -62,14 +59,14 @@ public class dino extends Actor
    public void moving()
     {   
         if(delay == 0) {
-            if(isMoving) { 
-                setImage(new GreenfootImage("dino.png"));
+            if(isLeft) { 
+                setImage(new GreenfootImage("dino_right.png"));
                 delay = 10;
-                isMoving = false; 
+                isLeft = false; 
             } else {
-                setImage(new GreenfootImage("dinoMove.png"));
+                setImage(new GreenfootImage("dino_left.png"));
                 delay = 10;
-                isMoving = true;
+                isLeft = true;
             }
         }
     }
@@ -80,6 +77,7 @@ public class dino extends Actor
            setLocation(getX() - 40, getY());
            World world = getWorld();
            world.removeObject(object);
+           setImage(new GreenfootImage("hurt.png"));
         }
     }
     
