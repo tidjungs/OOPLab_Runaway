@@ -13,9 +13,12 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
-    int count = 0;
-    int stage = 100;
-    int timeLogger = 0;
+    private int count = 0;
+    private int stage = 100;
+    private int timeLogger = 0;
+    private int cactusSpeed = -5;
+    public boolean gameOver = false;
+    
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -38,15 +41,20 @@ public class MyWorld extends World
 
     public void act()
     {
-        createObject();
-        timeLogger++;
-        System.out.println(timeLogger);
+        if(!gameOver) {
+            createObject();
+            changeStage();
+            timeLogger++;
+        } else {
+            Gameover go = new Gameover();
+            addObject(go,600,200);
+        }
     }
     public void createObject()
     {
-        if(Greenfoot.getRandomNumber(stage) < 1 && count <= 0) {
-            Object object = new Object();
-            addObject(object,1200,355);
+        if(Greenfoot.getRandomNumber(10) < 1 && count <= 0) {
+            Cactus cactus = new Cactus();
+            addObject(cactus,1200,355);
             count = stage;
         }
         count--;
@@ -54,9 +62,17 @@ public class MyWorld extends World
     }
     public void changeStage()
     {
-        if(timeLogger % 100 == 0) {
-            stage--;
+        if(timeLogger % 1000 == 0) {
+            cactusSpeed--;
+            System.out.println(cactusSpeed);
         }
-      
+    }
+    public int getCactusSpeed()
+    {
+        return cactusSpeed;
+    }
+    public void gameIsOver()
+    {
+        gameOver = true;
     }
 }

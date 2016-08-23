@@ -13,18 +13,23 @@ public class dino extends Actor
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
      
-    int vSpeed = 0;
-    int acceleration = 1;
-    boolean isLeft = false;
-    int delay = 0;
+    private int vSpeed = 0;
+    private int acceleration = 1;
+    private boolean isLeft = false;
+    private int delay = 0;
     public void act() 
     {
-        jump();
-        checkFall();
-        moving();
-        crash();
-        slide();
-        delay--;
+        boolean gameOver = ((MyWorld) getWorld()).gameOver;
+        if(!gameOver){
+            jump();
+            checkFall();
+            moving();
+            crash();
+            slide();
+            delay--;
+        } else {
+            setImage(new GreenfootImage("dino_die.png"));
+        }
     }
     public void slide()
     {
@@ -72,11 +77,11 @@ public class dino extends Actor
     }
     public void crash()
     {
-        Actor object = getOneIntersectingObject(Object.class);
-        if(object != null) {
+        Actor cactus = getOneIntersectingObject(Cactus.class);
+        if(cactus != null) {
            setLocation(getX() - 40, getY());
            World world = getWorld();
-           world.removeObject(object);
+           world.removeObject(cactus);
            setImage(new GreenfootImage("hurt.png"));
            delay = 20;
         }

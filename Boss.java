@@ -12,13 +12,19 @@ public class Boss extends Actor
      * Act - do whatever the Boss wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    boolean isLeft = false;
-    int delay = 0;
+    private boolean isLeft = false;
+    private int delay = 0;
     public void act() 
     {
-        moving();
-        crash();
-        delay--;
+        boolean gameOver = ((MyWorld) getWorld()).gameOver;
+        if(!gameOver) {
+            moving();
+            crash();
+            delay--;
+        } else {
+            setImage(new GreenfootImage("BigDino.png"));
+            setRotation(45);
+        }
     }
     public void moving()
     {   
@@ -36,10 +42,15 @@ public class Boss extends Actor
     }
     public void crash()
     {
-        Actor object = getOneIntersectingObject(Object.class);
-        if(object != null) {
+        Actor cactus = getOneIntersectingObject(Cactus.class);
+        if(cactus != null) {
            World world = getWorld();
-           world.removeObject(object);
+           world.removeObject(cactus);
+        }
+        
+        Actor dino = getOneIntersectingObject(dino.class);
+        if(dino != null) {
+           ((MyWorld) getWorld()).gameOver = true; 
         }
     }
 }

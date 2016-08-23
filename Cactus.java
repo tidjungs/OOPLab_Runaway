@@ -1,21 +1,20 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Object here.
+ * Write a description of class Cactus here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Object extends Actor
+public class Cactus extends Actor
 {
     /**
-     * Act - do whatever the Object wants to do. This method is called whenever
+     * Act - do whatever the Cactus wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int movement = -5;
     public void act() 
     {
-        move(movement);
+        movement();
         clearObject();
     }
     public void clearObject()
@@ -25,4 +24,10 @@ public class Object extends Actor
            world.removeObject(this);
         }
     }
+    public void movement()
+    {  
+        int speed = ((MyWorld)getWorld()).getCactusSpeed();
+        move(speed);
+    }
+
 }
