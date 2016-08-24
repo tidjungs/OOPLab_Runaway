@@ -16,7 +16,7 @@ public class MyWorld extends World
     private int count = 0;
     private int stage = 200;
     private int timeLogger = 0;
-    private int cactusSpeed = -2;
+    private int cactusSpeed = -4;
     public boolean gameOver = false;
     
     public MyWorld()
@@ -56,12 +56,14 @@ public class MyWorld extends World
     public void createObject()
     {
         if(Greenfoot.getRandomNumber(stage) < 1 && count <= 0) {
-            Cactus cactus = new Cactus();
-            addObject(cactus,1200,370);
+            if(Greenfoot.getRandomNumber(2) == 0) {
+                Cactus cactus = new Cactus();
+                addObject(cactus,1200,370);
+            } else {
+                Bird bird = new Bird();
+                addObject(bird,1200,300);
+            }
             count = stage;
-            /*Bird bird = new Bird();
-            addObject(bird,1200,370);
-            count = stage;*/
         }
         count--;
         

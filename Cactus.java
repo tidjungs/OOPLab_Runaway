@@ -26,7 +26,7 @@ public class Cactus extends Actor
     }
     public void movement()
     {  
-        int speed = ((MyWorld)getWorld()).getCactusSpeed();
+        int speed = ((MyWorld) getWorld()).getCactusSpeed();
         move(speed);
     }
 

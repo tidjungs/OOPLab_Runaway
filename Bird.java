@@ -30,18 +30,18 @@ public class Bird extends Actor
     }
     public void movement()
     {  
-        int speed = -5;
+        int speed = ((MyWorld) getWorld()).getCactusSpeed();
         move(speed);
     }
     public void moving()
     {   
         if(delay == 0) {
             if(wingUp) {
-                setImage(new GreenfootImage("bird.png"));
+                setImage(new GreenfootImage("bird_wingDown.png"));
                 delay = 20;
                 wingUp = false; 
             } else {
-                setImage(new GreenfootImage("bird2.png"));
+                setImage(new GreenfootImage("bird_wingUp.png"));
                 delay = 20;
                 wingUp = true;
             }

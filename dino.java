@@ -17,6 +17,7 @@ public class dino extends Actor
     private int acceleration = 1;
     private boolean isLeft = false;
     private int delay = 0;
+    private boolean isSliding = false;
     public void act() 
     {
         boolean gameOver = ((MyWorld) getWorld()).gameOver;
@@ -36,6 +37,9 @@ public class dino extends Actor
         if(Greenfoot.isKeyDown("shift")) {
            setImage(new GreenfootImage("dino_slide.png"));
            setLocation(getX(), 372);
+           isSliding = true;
+        } else {
+            isSliding = false;
         }
     }
     public void jump()
@@ -43,7 +47,7 @@ public class dino extends Actor
         if (Greenfoot.isKeyDown("space") && getY() == 358) {
             GreenfootSound jump = new GreenfootSound("jump.wav");
             jump.play();
-            vSpeed = -25;
+            vSpeed = -20;
             fall();
         } 
    
@@ -88,6 +92,16 @@ public class dino extends Actor
            delay = 20;
            GreenfootSound hurt = new GreenfootSound("hurt.wav");
            hurt.play();
+        }
+        Actor bird = getOneIntersectingObject(Bird.class);
+        if(bird != null && !isSliding) {
+           setLocation(getX() - 40, getY());
+           World world = getWorld();
+           world.removeObject(bird);
+           setImage(new GreenfootImage("hurt.png"));
+           delay = 20;
+           GreenfootSound hurt = new GreenfootSound("hurt.wav");
+           hurt.play(); 
         }
     }
     
