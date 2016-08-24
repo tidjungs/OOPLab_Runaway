@@ -59,6 +59,9 @@ public class MyWorld extends World
             Cactus cactus = new Cactus();
             addObject(cactus,1200,370);
             count = stage;
+            /*Bird bird = new Bird();
+            addObject(bird,1200,370);
+            count = stage;*/
         }
         count--;
         
