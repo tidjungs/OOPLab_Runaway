@@ -30,13 +30,16 @@ public class dino extends Actor
             delay--;
         } else {
             setImage(new GreenfootImage("dino_die.png"));
+            setLocation(getX(), 358);
         }
     }
     public void slide()
     {
         if(Greenfoot.isKeyDown("shift")) {
            setImage(new GreenfootImage("dino_slide.png"));
-           setLocation(getX(), 372);
+           if(getY() >= 358) {
+               setLocation(getX(), 372);
+           }
            isSliding = true;
         } else {
             isSliding = false;
