@@ -51,7 +51,7 @@ public class Boss extends Actor
         Actor dino = getOneIntersectingObject(dino.class);
         if(dino != null) {
            ((MyWorld) getWorld()).gameOver = true;
-           GreenfootSound gameover = new GreenfootSound("gameover.wav");
+           GreenfootSound gameover = new GreenfootSound("scream.wav");
            gameover.play();
         }
     }

@@ -63,7 +63,7 @@ public class MyWorld extends World
                 Bird bird = new Bird();
                 addObject(bird,1200,300);
             }
-            count = stage;
+            count = 100;
         }
         count--;
         

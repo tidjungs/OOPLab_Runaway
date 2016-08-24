@@ -97,7 +97,7 @@ public class dino extends Actor
            hurt.play();
         }
         Actor bird = getOneIntersectingObject(Bird.class);
-        if(bird != null && !isSliding) {
+        if(bird != null && !isSliding ) {
            setLocation(getX() - 40, getY());
            World world = getWorld();
            world.removeObject(bird);
