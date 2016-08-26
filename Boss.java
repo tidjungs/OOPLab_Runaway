@@ -16,7 +16,7 @@ public class Boss extends Actor
     private int delay = 0;
     public void act() 
     {
-        boolean gameOver = ((MyWorld) getWorld()).gameOver;
+        boolean gameOver = ((MyWorld) getWorld()).isGameOver();
         if(!gameOver) {
             moving();
             crash();
@@ -50,7 +50,7 @@ public class Boss extends Actor
         
         Actor dino = getOneIntersectingObject(dino.class);
         if(dino != null) {
-           ((MyWorld) getWorld()).gameOver = true;
+           ((MyWorld) getWorld()).gameIsOver();
            GreenfootSound gameover = new GreenfootSound("scream.wav");
            gameover.play();
         }

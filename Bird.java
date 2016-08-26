@@ -12,7 +12,7 @@ public class Bird extends Actor
      * Act - do whatever the bird wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    int delay = 0;
+    private int delay = 0;
     boolean wingUp = false;
     public void act() 
     {

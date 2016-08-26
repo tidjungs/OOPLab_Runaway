@@ -14,10 +14,11 @@ public class MyWorld extends World
      * 
      */
     private int count = 0;
-    private int stage = 200;
+    private int stage = 100;
     private int timeLogger = 0;
     private int cactusSpeed = -4;
-    public boolean gameOver = false;
+    private boolean gameOver = false;
+    private int gameOverCount = 0;
     
     public MyWorld()
     {    
@@ -51,6 +52,11 @@ public class MyWorld extends World
         } else {
             Gameover go = new Gameover();
             addObject(go,600,200);
+            gameOverCount++;
+        }
+        
+        if(gameOverCount > 100) {
+           Greenfoot.stop();
         }
     }
     public void createObject()
@@ -81,5 +87,9 @@ public class MyWorld extends World
     public void gameIsOver()
     {
         gameOver = true;
+    }
+    public boolean isGameOver()
+    {
+        return gameOver;
     }
 }

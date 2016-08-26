@@ -13,14 +13,14 @@ public class Counter extends Actor
     private int timeLog = 0;
     public void act() 
     {
-        setImage(new GreenfootImage("Score : " + score, 24, Color.BLACK, Color.WHITE));
+        setImage(new GreenfootImage("Score : " + score, 24, Color.BLACK, null));
         addScore();
         timeLog++;
     }    
      
     public void addScore()
     {   
-        boolean gameOver = ((MyWorld) getWorld()).gameOver;
+        boolean gameOver = ((MyWorld) getWorld()).isGameOver();
         if(timeLog % 100 == 0 && !gameOver){
             score++;
         }

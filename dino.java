@@ -17,17 +17,23 @@ public class dino extends Actor
     private int acceleration = 1;
     private boolean isLeft = false;
     private int delay = 0;
+    private int hurtDelay = 0;
     private boolean isSliding = false;
     public void act() 
     {
-        boolean gameOver = ((MyWorld) getWorld()).gameOver;
-        if(!gameOver){
-            jump();
-            checkFall();
-            moving();
-            crash();
-            slide();
-            delay--;
+        boolean gameOver = ((MyWorld) getWorld()).isGameOver();
+        if(!gameOver) {
+            if(hurtDelay == 0) {
+                jump();
+                checkFall();
+                moving();
+                crash();
+                slide();
+                delay--;
+            } else {
+                hurtDelay--;
+                setImage(new GreenfootImage("hurt.png"));
+            }
         } else {
             setImage(new GreenfootImage("dino_die.png"));
             setLocation(getX(), 358);
@@ -36,11 +42,11 @@ public class dino extends Actor
     public void slide()
     {
         if(Greenfoot.isKeyDown("shift")) {
-           setImage(new GreenfootImage("dino_slide.png"));
-           if(getY() >= 358) {
-               setLocation(getX(), 372);
-           }
-           isSliding = true;
+            setImage(new GreenfootImage("dino_slide.png"));
+            if(getY() >= 358) {
+                setLocation(getX(), 372);
+            }
+            isSliding = true;
         } else {
             isSliding = false;
         }
@@ -50,7 +56,7 @@ public class dino extends Actor
         if (Greenfoot.isKeyDown("space") && getY() == 358) {
             GreenfootSound jump = new GreenfootSound("jump.wav");
             jump.play();
-            vSpeed = -20;
+            vSpeed = -18;
             fall();
         } 
    
@@ -88,21 +94,19 @@ public class dino extends Actor
     {
         Actor cactus = getOneIntersectingObject(Cactus.class);
         if(cactus != null) {
-           setLocation(getX() - 40, getY());
+           setLocation(getX() - 60, getY());
            World world = getWorld();
            world.removeObject(cactus);
-           setImage(new GreenfootImage("hurt.png"));
-           delay = 20;
+           hurtDelay = 10;
            GreenfootSound hurt = new GreenfootSound("hurt.wav");
            hurt.play();
         }
         Actor bird = getOneIntersectingObject(Bird.class);
         if(bird != null && !isSliding ) {
-           setLocation(getX() - 40, getY());
+           setLocation(getX() - 60, getY());
            World world = getWorld();
            world.removeObject(bird);
-           setImage(new GreenfootImage("hurt.png"));
-           delay = 20;
+           hurtDelay = 10;
            GreenfootSound hurt = new GreenfootSound("hurt.wav");
            hurt.play(); 
         }
